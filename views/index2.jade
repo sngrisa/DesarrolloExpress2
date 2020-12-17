@@ -1,0 +1,39 @@
+extends ./layout.jade
+block contenido
+    <div class="container content text-center">
+    form(action="/users", method="POST")
+        div(class="form-group")
+        <img src="https://i.makeagif.com/media/11-05-2015/7-wFhQ.gif">
+        br
+        h2 Dar de alta a los usuarios
+        br
+        p Complete los siguientes espacios para dar de alta a un usuario en el sistema: 
+        br
+        label(for="nombre") Nombre:
+        br
+        input(type="text" placeholder="Ingrese el nombre" name="nombre" id="nombre" class="form-control" required)
+        br
+        label(for="mail") Email:
+        br
+        input(type="email" placeholder="Ingrese el correo" name="mail" id="email" class="form-control" required)
+        br
+        br
+        label(for="telefono") Numero de telefono:
+        br
+        input(type="tel" placeholder="Ingrese su numero telefonico" name="telefono" id="telefono" class="form-control" required)
+        br
+        label(for="passwords") Contraseña:
+        br
+        input(type="password" placeholder="Ingrese la contraseña" name="passwords" id="password" class="form-control" required)
+        br
+        label(for="passwords") Confirmar Contraseña:
+        br
+        input(type="password" placeholder="Ingrese la contreseña" name="passwords" id="password" class="form-control" required)
+        br
+        br
+        br
+        input(class="btn btn-info" type="submit" value="Enviar Datos")
+        br
+        br
+
+        

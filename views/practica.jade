@@ -1,0 +1,33 @@
+html 
+  head
+    // Declaracion de una variable en un jade y asignacion de valores mediante el uso de otra clase
+    title!= nombre
+  body
+      // Declaracion de una variable en un jade y asignacion de valores mediante el uso de otra clase
+    h1!= nombre
+     // Declaracion de un arreglo comun  de 5 numeros
+    - var arreglo = [1,2,3,4,5];
+    // Declaracion del for para imprimir los numeros de manera decreciente
+    - for(var i=arreglo.length - 1; i>=0; i--)
+      // Usando estilos de html junto a la impresion de los numeros
+      p!= "<h2>"+arreglo[i]+"</h2>"
+      // Concatenar un nombre con una variable
+      p Numero #{arreglo[i]}
+      // Usar un mensaje con un enlace a una pagina mediante el parrafo y el punto
+      // If sirve para mostrar un elemento o no como el mensaje y el enlace a codigo facilito
+    - if(true)
+      p.
+        Haz click aqui para ingresar a la pagina #[a(href="http://codigofacilito.com") de Codigo Facilito ]
+      // Otra forma de convocar los elementos del arreglo sin usar el for mediante el switch
+      // Declaracion de cada elemento del arreglo
+      each item in arreglo
+        // Uso del switch, devuelve los siguientes mensajes dependiendo del numero when numero, sino regresa un default
+        case item
+          when 1
+            p El numero es 1
+          when 2
+            p El numero es 2
+          when 3
+            p El numero es 3
+          default
+            p El numero es 4 o 5
