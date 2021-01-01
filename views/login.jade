@@ -1,0 +1,24 @@
+extends ./layout2
+block contenido2
+    <div class="container" style="text-align: center;">
+    form(action='/users', method='POST')
+        div(class="form-group")
+        <img src="https://i.pinimg.com/originals/db/a6/a9/dba6a9ce97ab49b1bc70f872879bbcf7.gif">
+        br
+        h2 Panel de Login de Usuarios!
+        br
+        label(for="nombre") Nombre de usuario:
+        br
+        input(type="text" name="nombre" placeholder="Ingrese el nombre del usuario" required class="form-control")
+        br
+        label(for="password") Contraseña:
+        br
+        input(type="password" name="contraseña" placeholder="Ingrese su contraseña" required class="form-control")
+        br
+        br
+        input(type="submit" value="Iniciar Sesion" class="form-control" style="background-color: black; color: white;")
+        br
+        a(href="./alta" style="background-color: black; color: white;") Registrarse
+        br
+        br
+        h6 (C) 2021 SiG Sofware. Todos los derechos reservados. www.sigsoftware.es

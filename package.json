@@ -14,5 +14,14 @@
     "express": "^4.17.1",
     "http-server": "^0.12.3",
     "jade": "^1.11.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sngrisa/DesarrolloExpress2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sngrisa/DesarrolloExpress2/issues"
+  },
+  "homepage": "https://github.com/sngrisa/DesarrolloExpress2#readme"
 }
