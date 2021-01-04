@@ -11,24 +11,24 @@ block contenido
         br
         label(for="nombre") Nombre:
         br
-        input(type="text" placeholder="Ingrese el nombre" name="nombre" id="nombre" class="form-control" required)
+        input(type="text" placeholder="Ingrese el nombre" name="nombre" id="nombre" class="form-control" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required)
         br
         label(for="email") Email:
         br
-        input(type="email" placeholder="Ingrese el correo" name="email" id="email" class="form-control" required)
+        input(type="email" placeholder="Ingrese el correo" name="email" id="email" class="form-control" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required)
         br
         br
         label(for="telefono") Numero de telefono:
         br
-        input(type="tel" placeholder="Ingrese su numero telefonico" name="telefono" id="telefono" class="form-control" required)
+        input(type="tel" placeholder="Ingrese su numero telefonico" name="telefono" id="telefono" class="form-control" pattern="^[0-9]+$" required)
         br
         label(for="password") Contraseña:
         br
-        input(type="password" placeholder="Ingrese la contraseña" name="password" id="password" class="form-control" required)
+        input(type="password" placeholder="Ingrese la contraseña" name="password" id="password" class="form-control" min=4 max=15 required)
         br
-        label(for="password2") Confirmar Contraseña:
+        label(for="password_confirmation") Confirmar Contraseña:
         br
-        input(type="password" placeholder="Ingrese la contreseña" name="password2" id="password2" class="form-control" required)
+        input(type="password" placeholder="Ingrese nuevamente la contraseña" name="password_confirmation" id="password_confirmation" class="form-control" min=4 max=15 required)
         br
         br
         br

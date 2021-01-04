@@ -3,7 +3,6 @@ var bodyParser = require("body-parser");
 var app = express();
 var User = require("./models/user.js").User;
 
-
 app.use("/state", express.static('public'));
 
 app.get("/java", function(req,res){
@@ -47,10 +46,20 @@ app.post("/users", function(req,res){
         telefono: req.body.telefono,
         email: req.body.email,
         password: req.body.password,
+        password_confirmation: req.body.password_confirmation, 
     });
-
-    user.save(function(){
-        res.send("Datos registrados con exito en el sistema");
+    console.log("------------------------");
+    console.log("Password de confirmacion");
+    console.log("------------------------");
+    // @ts-ignore
+    console.log(user.password_confirmation);
+    user.save(function(err,password, password_confirmation){
+        if(err){
+            res.send(String(err));
+            console.log(String(err));
+        }else{
+            res.send("Datos registrados con exito en el sistema");
+        }
     });
 });
 
