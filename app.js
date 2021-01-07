@@ -2,9 +2,11 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
 var User = require("./models/user.js").User;
+var session = require("express-session");
 
 app.use("/state", express.static('public'));
 
+// @ts-ignore
 app.get("/java", function(req,res){
     res.render("./public/javascripts/javascript.js");
 });
@@ -12,27 +14,33 @@ app.get("/java", function(req,res){
 // Uso del body-parser
 app.use(bodyParser.json()); // para peticiones que tengan el formato json
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(session({secret:"123byuhbsdah12ub"}));
 
 app.use(express.static('assets'));
 
 app.set("view engine", "jade");
 
+// @ts-ignore
 app.get("/envio", function(req,res){
     res.render("pruebaenvio", {nombre : "Pagina de SiG Software", titulo: "Pagina de SiG Sofware"});
 });
 
+// @ts-ignore
 app.get("/prueba", function(req,res){
     res.render("prueba");
 });
 
+// @ts-ignore
 app.get("/login", function(req,res){
         res.render("login"); 
 });
 
+// @ts-ignore
 app.post("/envio", function(req,res){
     res.render("envio");
 });
 
+// @ts-ignore
 app.get("/alta", function(req,res){
     res.render("altausuarios");
 });
@@ -57,6 +65,7 @@ app.post("/users", function(req,res){
     console.log(user.password_confirmation);
 
     //Uso de promises en Mongoose
+    // @ts-ignore
     user.save().then(function(us){
         res.send("Guardamos los datos en el sistema");
     },function(err){
@@ -67,10 +76,19 @@ app.post("/users", function(req,res){
     });
 });
 
+app.get("/", function(req,res){
+    // @ts-ignore
+    console.log(req.session.user_id);
+});
+
+// @ts-ignore
 app.post("/sessions", function(req,res){
-        User.findOne({email: req.body.email, password: req.body.password}, function(err,docs){
-                    console.log(docs);
-                    res.send("Sesion Iniciada");
+        // @ts-ignore
+        User.findOne({email: req.body.email, password: req.body.password}, function(err,doc){
+                    console.log(doc);
+                    // @ts-ignore
+                    req.session.user_id = User._id;
+                    res.send("Sesion Iniciada Correctamente");
         });
 });
 
