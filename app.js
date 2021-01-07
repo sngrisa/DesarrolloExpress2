@@ -26,10 +26,7 @@ app.get("/prueba", function(req,res){
 });
 
 app.get("/login", function(req,res){
-    User.find(function(err,doc){
-        console.log(doc);
         res.render("login"); 
-    });
 });
 
 app.post("/envio", function(req,res){
@@ -48,19 +45,33 @@ app.post("/users", function(req,res){
         password: req.body.password,
         password_confirmation: req.body.password_confirmation, 
     });
-    console.log("------------------------");
-    console.log("Password de confirmacion");
-    console.log("------------------------");
+    console.log("------------------------------------");
+    console.log("Historial de contraseñas confirmadas")
+    console.log("------------------------------------");
+    console.log("Password de confirmacion para :");
+    console.log("------------------------------------");
+    // @ts-ignore
+    console.log(user.nombre);
+    console.log("------------------------------------");
     // @ts-ignore
     console.log(user.password_confirmation);
-    user.save(function(err,password, password_confirmation){
+
+    //Uso de promises en Mongoose
+    user.save().then(function(us){
+        res.send("Guardamos los datos en el sistema");
+    },function(err){
         if(err){
-            res.send(String(err));
-            console.log(String(err));
-        }else{
-            res.send("Datos registrados con exito en el sistema");
+            console.log(""+err);
+            res.send(""+err);
         }
     });
+});
+
+app.post("/sessions", function(req,res){
+        User.findOne({email: req.body.email, password: req.body.password}, function(err,docs){
+                    console.log(docs);
+                    res.send("Sesion Iniciada");
+        });
 });
 
 app.listen(8080);

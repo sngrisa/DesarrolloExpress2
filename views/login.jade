@@ -1,15 +1,11 @@
 extends ./layout2
 block contenido2
     <div class="container" style="text-align: center;">
-    form(action='/users', method='POST')
+    form(action='/sessions', method='POST')
         div(class="form-group")
         <img src="https://i.pinimg.com/originals/db/a6/a9/dba6a9ce97ab49b1bc70f872879bbcf7.gif">
         br
         h2 Panel de Login de Usuarios!
-        br
-        label(for="nombre") Nombre de usuario:
-        br
-        input(type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre del usuario" required class="form-control")
         br
         label(for="email") Email:
         br

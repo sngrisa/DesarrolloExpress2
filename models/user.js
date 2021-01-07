@@ -12,7 +12,7 @@ var password_validation ={
         validator: function(p){
             return this.password_confirmation == p;
         },
-        message: "Las contraseñas no coinciden",
+        message: "Las contraseñas no coinciden, compruebalo nuevamente",
 };
 
 //Creacion de los campos de la tabla mediante Schema
