@@ -3,6 +3,8 @@ var bodyParser = require("body-parser");
 var app = express();
 var User = require("./models/user.js").User;
 var session = require("express-session");
+var router_app = require("./app/routes_app.js");
+var session_middleware = require("./middlewares/session");
 
 app.use("/state", express.static('public'));
 
@@ -14,7 +16,11 @@ app.get("/java", function(req,res){
 // Uso del body-parser
 app.use(bodyParser.json()); // para peticiones que tengan el formato json
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(session({secret:"123byuhbsdah12ub"}));
+app.use(session({
+secret:"123byuhbsdah12ub",
+resave: false,
+saveUninitialized: false,
+}));
 
 app.use(express.static('assets'));
 
@@ -43,6 +49,12 @@ app.post("/envio", function(req,res){
 // @ts-ignore
 app.get("/alta", function(req,res){
     res.render("altausuarios");
+});
+
+app.get("/", function(req,res){
+    res.render("index");
+    // @ts-ignore
+    res.send(req.session.user_id);
 });
 
 app.post("/users", function(req,res){
@@ -76,20 +88,18 @@ app.post("/users", function(req,res){
     });
 });
 
-app.get("/", function(req,res){
-    // @ts-ignore
-    console.log(req.session.user_id);
-});
-
 // @ts-ignore
 app.post("/sessions", function(req,res){
         // @ts-ignore
-        User.findOne({email: req.body.email, password: req.body.password}, function(err,doc){
-                    console.log(doc);
+        User.findOne({email: req.body.email, password: req.body.password}, function(err,user){
+                    console.log(user);
                     // @ts-ignore
-                    req.session.user_id = User._id;
-                    res.send("Sesion Iniciada Correctamente");
+                    req.session.user_id = user._id;
+                    res.render("app/home");
         });
 });
+
+app.use("/app", session_middleware);
+app.use("/app", router_app);
 
 app.listen(8080);

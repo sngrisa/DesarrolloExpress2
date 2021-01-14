@@ -1,9 +1,9 @@
 extends ./layout2
 block contenido2
-    <div class="container" style="text-align: center;">
+    <div class="row" style="text-align: center;">
     form(action='/sessions', method='POST')
         div(class="form-group")
-        <img src="https://i.pinimg.com/originals/db/a6/a9/dba6a9ce97ab49b1bc70f872879bbcf7.gif">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/User_Circle.png">
         br
         h2 Panel de Login de Usuarios!
         br
@@ -20,5 +20,6 @@ block contenido2
         br
         a(href="./alta" style="background-color: black; color: white;") Registrarse
         br
+        a(href="/") Volver a la pagina principal
         br
         h6 (C) 2021 SiG Sofware. Todos los derechos reservados. www.sigsoftware.es
