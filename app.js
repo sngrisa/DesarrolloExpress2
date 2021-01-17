@@ -95,7 +95,7 @@ app.post("/sessions", function(req,res){
                     console.log(user);
                     // @ts-ignore
                     req.session.user_id = user._id;
-                    res.render("app/home");
+                    res.redirect("/app");
         });
 });
 

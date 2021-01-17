@@ -2,11 +2,26 @@ extends ./layout
 
 block contenido
     form(action="/sessions" method="POST")
-        div(class="form-group")
-            h2 Sesion Iniciada Correctamente. Bienvenido haga click en cualquiera de las opciones para realizar una operacion
+        div(class="form-group text-dark text-center pt-3 bg-white col-sm-5 container")
+            h2 Bienvenido al sistema online de SiG Software
             br
+            h4 Nombre de usuario: 
+            h5 #{user.nombre}
             br
+            h4 Correo:
+            h5 #{user.email}
             br
+            h4 Telefono:
+            h5 #{user.telefono}
             br
-            br
-            H5 (C) 2021 SiG Software. Todos los derechos reservados. wwww.sigsoftware.com
+            div(class="form-group text-center pt-3 bg-white col-sm-5 container pt-3")
+                img(src="https://media.tenor.com/images/cdebc626b4690f8ab2803b96089ad808/tenor.gif")
+                br
+                input(type="submit" value="Aceptar" style="background-color: black; color: white;")
+                br
+                br
+                div(class="bg-white text-secondary col-sm-12")
+                    h6 (c) 2021 SiG Software. Todos los derechos reservados
+                    br
+                    br
+                   
