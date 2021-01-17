@@ -4,7 +4,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 //Se establece la conexion a la base de datos mediante Mongoose
-mongoose.connect("mongodb://localhost/siggames");
+mongoose.connect("mongodb://localhost/siggames",{
+  useCreateIndex: true,
+  useUnifiedTopology:true,
+  useNewUrlParser: true
+});
 
 var email_match = [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Ingrese un email valido"];
 

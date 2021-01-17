@@ -53,8 +53,7 @@ app.get("/alta", function(req,res){
 
 app.get("/", function(req,res){
     res.render("index");
-    // @ts-ignore
-    res.send(req.session.user_id);
+    console.log(req.session.user_id);
 });
 
 app.post("/users", function(req,res){
