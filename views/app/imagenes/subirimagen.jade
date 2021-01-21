@@ -1,0 +1,32 @@
+extends ./layout
+
+block contenido
+    div(class="bg-white col-sm-5 text-center container pt-3 form-group")
+        form(action='/app/imagenes', method='POST')
+            img(src="https://bitsdujourblob.blob.core.windows.net/software/icon/imagebadger-deluxe.png")
+            br
+            br
+            h5 Ingrese los datos de la imagen: 
+            br
+            label(for="title") Titulo de la imagen:
+            br
+            input(type="text" id="title" name="title" placeholder="Ingrese el titulo de la imagen" class="form-control" required)
+            br
+            label(for="descripcion") Descripcion breve de la imagen de la imagen:
+            br
+            input(type="text" id="descricion" name="descripcion" placeholder="Ingrese la descripcion de la imagen" class="form-control" required)
+            br
+            label(for="archivo") Examinar Imagen:
+            br
+            input(type="file" id="archivo" name="archivo" placeholder="Ingrese una archivo de su computadora" required class="form-control")
+            br
+            br
+            input(type="submit" value="Subir Imagen" class="btn btn-primary form-control text-white")
+            br
+            br
+            a.btn(href="/login" class="btn btn-secondary form-control") Volver a la pagina de Inicio
+            br
+            div(class="text-black pt-3")
+            br
+            br
+            div

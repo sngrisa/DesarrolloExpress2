@@ -1,10 +1,12 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
+var path = require('path');
 var User = require("./models/user.js").User;
-var session = require("express-session");
+var cookiesession = require("cookie-session");
 var router_app = require("./app/routes_app.js");
 var session_middleware = require("./middlewares/session");
+var publicPath = path.resolve(__dirname, 'public');
 
 app.use("/state", express.static('public'));
 
@@ -16,13 +18,15 @@ app.get("/java", function(req,res){
 // Uso del body-parser
 app.use(bodyParser.json()); // para peticiones que tengan el formato json
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(session({
-secret:"123byuhbsdah12ub",
-resave: false,
-saveUninitialized: false,
+
+app.use(cookiesession({
+    name :"session",
+    // @ts-ignore
+    keys :  ["llave-1", "llave-2"],
 }));
 
 app.use(express.static('assets'));
+app.use(express.static(publicPath));
 
 app.set("view engine", "jade");
 
@@ -53,6 +57,7 @@ app.get("/alta", function(req,res){
 
 app.get("/", function(req,res){
     res.render("index");
+    // @ts-ignore
     console.log(req.session.user_id);
 });
 
