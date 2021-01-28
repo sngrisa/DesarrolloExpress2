@@ -1,0 +1,28 @@
+extends ./layout
+
+block contenido
+    div(class="bg-white col-sm-5 text-center container pt-3 form-group")
+        form(action="/app/imagenes/#{imagen.id}?_method=PUT", method='POST')
+            img(src="https://bitsdujourblob.blob.core.windows.net/software/icon/imagebadger-deluxe.png")
+            br
+            br
+            h5 Actualizar la imagen : #{imagen._id}
+            br
+            label(for="title") Titulo de la imagen:
+            br
+            input(type="text" id="title" name="title" placeholder="Ingrese el titulo de la imagen" class="form-control" required value="#{imagen.title}")
+            br
+            label(for="descripcion") Descripcion breve de la imagen de la imagen:
+            br
+            input(type="text" id="descricion" name="descripcion" placeholder="Ingrese la descripcion de la imagen" class="form-control" required value="#{imagen.descripcion}")
+            br
+            input(type="submit" value="Actualizar Imagen" class="btn btn-primary form-control text-white")
+            br
+            br
+            a.btn(href="/app/imagenes" class="btn btn-secondary form-control") Volver a la pagina de Inicio
+            br
+            br
+            br
+            div
+            br
+            br

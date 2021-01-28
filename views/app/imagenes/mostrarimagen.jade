@@ -1,0 +1,37 @@
+extends ../layout.jade
+
+block contenido
+    div(class="container text-center pt-3 bg-white")
+        h2 Visualizacion de imagenes
+        br
+        for imagen in imagenes
+            .white.border.tr.larger-padding.text-warning
+                .row
+                    .col-md-4
+                        h4=imagen.title
+                    .col-md-4
+                        h4=imagen.descripcion
+                    .col-md-4
+                        a(href="/app/imagenes/#{imagen._id}/edit") Editar
+                        br
+                        form(action="/app/imagenes/#{imagen._id}?_method=DELETE" 
+                        class="link" method="POST")
+                            input(type="submit", value="Eliminar")
+        div(class="text-center text-white")
+        br
+        a(href="/app/imagenes/alta" class="btn btn-success") Subir Imagen
+        br
+        br
+        a(href="/app" class="btn btn-info") Volver a la pagina principal
+        br
+        br
+    div
+    br
+    br
+    br
+    br
+    br
+    br
+
+    
+

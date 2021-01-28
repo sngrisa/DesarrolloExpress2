@@ -11,5 +11,41 @@
 }
 
 .fondo{
-    background-image: url(https://static.wikia.nocookie.net/finalfantasy/images/e/e4/7th_Heaven_exterior_in_FFVII_Remake.jpg/revision/latest?cb=20190924165828);
+    background-image: url(https://fondosmil.com/fondo/9725.jpg);
+}
+
+.large-padding{
+    padding: 10px 15px;
+}
+
+.black{
+    background-color: black;
+}
+
+.white-text{
+    color: white;
+}
+
+nav li{
+    display: inline-block;
+    margin-right: 1em;
+    font-size: 20px;
+}
+
+nav li a{
+    color: white;
+}
+
+nav li a:hover{
+    color: white;
+}
+
+form.link{
+    display: inline-block;
+}
+
+form.link input[type="submit"]{
+    background-color: transparent;
+    border: none;
+    color: rgb(200,50,50);
 }

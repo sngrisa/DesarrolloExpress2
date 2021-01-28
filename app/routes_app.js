@@ -20,7 +20,9 @@ router.get("/imagenes/alta", function(req,res){
 });
 
 router.get("/imagenes/:id/edit", function(req,res){
-
+    Imagen.findById(req.params.id, function(err,imagen){
+        res.render("app/imagenes/actualizarimagen", {imagen: imagen})
+    });
 });
 
 router.route("/imagenes/:id")
@@ -30,15 +32,39 @@ router.route("/imagenes/:id")
     });
 })
 .put(function(req,res){
-
+    Imagen.findById(req.params.id, function(err,imagen){
+        imagen.title = req.body.title;
+        imagen.descripcion = req.body.descripcion;
+        imagen.save(function(err){
+            if(!err){
+            res.render("app/imagenes/show", {imagen: imagen});
+             }else{
+            res.render("app/imagenes/"+imagen._id+"/edit", {imagen: imagen});
+            }
+        })
+    })
 })
 .delete(function(req,res){
-
+    Imagen.findOneAndRemove({_id: req.params.id}, function(err){
+        if(!err){
+            res.redirect("/app/imagenes");
+        }else{
+            console.log(err);
+            res.redirect("/app/imagenes"+req.params.id);
+        }
+    });
 });
 
 router.route("/imagenes")
 .get(function(req,res){
-
+    Imagen.find({}, function(err,imagenes){
+        if(err){
+            console.log(err);
+            res.redirect("/app");
+            return;
+        }
+            res.render("app/imagenes/mostrarimagen",{imagenes: imagenes});
+    });
 })
 .post(function(req,res){
     var data = {

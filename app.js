@@ -7,6 +7,7 @@ var cookiesession = require("cookie-session");
 var router_app = require("./app/routes_app.js");
 var session_middleware = require("./middlewares/session");
 var publicPath = path.resolve(__dirname, 'public');
+var methodOverride = require("method-override");
 
 app.use("/state", express.static('public'));
 
@@ -27,6 +28,7 @@ app.use(cookiesession({
 
 app.use(express.static('assets'));
 app.use(express.static(publicPath));
+app.use(methodOverride("_method"));
 
 app.set("view engine", "jade");
 
