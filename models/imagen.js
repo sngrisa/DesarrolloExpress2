@@ -14,6 +14,8 @@ var imagen_schema = new schema({
     descripcion: 
     {type: String,
     required:true},
+    creator:
+    {type: schema.Types.ObjectId, ref: "User"},
 });
 
 var Imagen = mongoose.model("Imagen", imagen_schema);
