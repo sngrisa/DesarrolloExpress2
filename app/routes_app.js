@@ -54,7 +54,7 @@ router.route("/imagenes/:id")
 
 router.route("/imagenes")
 .get(function(req,res){
-    Imagen.find({creator: res.locals.user._id}, function(err,imagenes){
+    Imagen.find({}, function(err,imagenes){
         if(err){
             console.log(err);
             res.redirect("/app");
