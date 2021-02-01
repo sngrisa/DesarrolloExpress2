@@ -11,13 +11,18 @@ block contenido
         h4 Titulo de la Imagen:
         h6= imagen.title
         br
-        br
         h4 Descripcion de la Imagen:
         h6= imagen.descripcion
         br
+        h4 Imagen Creada por :
+        h6 #{imagen.creator.nombre}
         br
-        h4 Imagen Creada por
+        h5 Correo Electronico:
         h6 #{imagen.creator.email}
+        br
+        h4 Imagen a mostrar:
+        br
+        img(src="/imagenes/#{imagen._id}.#{imagen.extension}" style="width: 400px; height: 300px;")
         br
         br
         a.btn(class="btn btn-success" href="/app/imagenes/") Aceptar y volver a la pagina de paginas

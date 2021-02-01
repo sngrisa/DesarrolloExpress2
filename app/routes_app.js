@@ -1,7 +1,9 @@
 var express = require("express");
 var router = express.Router();
 var Imagen = require("../models/imagen");
+var fs = require("fs");
 var image_finder_middleware = require("../middlewares/find_image");
+
 
 router.get("/",function(req,res){
     //Buscar usuarios
@@ -64,27 +66,29 @@ router.route("/imagenes")
     });
 })
 .post(function(req,res){
-    console.log("-------------------------");
-    console.log("Usuario que creo la imagen :");
-    console.log("Nombre del usuario: ");
-    console.log(res.locals.user.nombre);
-    console.log("Email:");
-    console.log(res.locals.user.email);
-    console.log("-------------------------");
+    var extension = req.body.archivo.name.split(".").pop();
     var data = {
         title: req.body.title,
         descripcion: req.body.descripcion,
         creator: res.locals.user._id,
+        extension: extension,
     }
     var imagen = new Imagen(data);
 
     imagen.save(function(err){
-        if(err){
-           // @ts-ignore
-           res.render(err); 
+        if(!err){
+            fs.copyFile(req.body.archivo.path, "public/imagenes/"+imagen._id+"."+extension, function(err){
+                if(err){
+                    return console.log(err);
+                }else{
+                    console.log("sucess!");
+                    res.redirect("/app/imagenes/"+imagen._id);
+                }
+            });
         }else{
-            console.log(imagen);
-            res.redirect("/app/imagenes/"+imagen._id);
+            // @ts-ignore
+           res.render(err); 
+           console.log(imagen);
         }
     });
 })

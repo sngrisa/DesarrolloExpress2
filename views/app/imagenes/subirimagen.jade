@@ -2,7 +2,7 @@ extends ./layout
 
 block contenido
     div(class="bg-white col-sm-5 text-center container pt-3 form-group")
-        form(action='/app/imagenes', method='POST')
+        form(action='/app/imagenes', method='POST' enctype="multipart/form-data")
             img(src="https://bitsdujourblob.blob.core.windows.net/software/icon/imagebadger-deluxe.png")
             br
             br
