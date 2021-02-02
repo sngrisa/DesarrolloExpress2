@@ -13,13 +13,34 @@ block contenido
             h4 Telefono:
             h5 #{user.telefono}
             br
+            h4.bg-info.text-white Imagenes subidas al servidor:
+                    br
+                    br
+                    .row.bg-dark.text-white
+                        br
+                        br
+                        .col-sm-4
+                            h6 Titulo de la Imagen:
+                        .col-sm-4
+                            h6 Descripcion de la Imagen:
+                        .col-sm-4
+                            h6 Imagen:
+                for imagen in imagenes
+                    .row
+                        .col-sm-4
+                            br
+                            br
+                            h6 #{imagen.title}
+                        .col-sm-4
+                            br
+                            br
+                            h6 #{imagen.descripcion}
+                        .col-sm-4
+                            img(src="/imagenes/#{imagen._id}.#{imagen.extension}" style="height: 150px; width: 200px;")
+            br
         div
         br
         br
         br
-        br
-        br
-        br
-        br
-        br
+            
                    

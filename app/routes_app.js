@@ -6,8 +6,15 @@ var image_finder_middleware = require("../middlewares/find_image");
 
 
 router.get("/",function(req,res){
-    //Buscar usuarios
-    res.render('app/home');
+    Imagen.find({})
+        .populate("creator")
+        .exec(function(err,imagenes){
+            if(err){
+                console.log(err);
+            }else{
+                res.render("app/home", {imagenes: imagenes});
+            }
+        });
     console.log("---------------------------------");
     console.log("Id de usuario logueado:");
     console.log("---------------------------------");

@@ -7,15 +7,19 @@ block contenido
         for imagen in imagenes
             .white.border.tr.larger-padding.text-warning
                 .row
-                    .col-md-4
+                    .col-md-2
                         h4=imagen.title
-                    .col-md-4
+                    .col-md-2
                         h4=imagen.descripcion
-                    .col-md-4
+                    .col-md-2
                         a(href="/app/imagenes/#{imagen._id}/edit") Editar
                         br
+                        
+                    .col-md-2
+                        a(href="/app/imagenes/#{imagen._id}") Visualizar
+                    .col-md-2
                         form(action="/app/imagenes/#{imagen._id}?_method=DELETE" 
-                        class="link" method="POST")
+                            class="link" method="POST")
                             input(type="submit", value="Eliminar")
         div(class="text-center text-white")
         br

@@ -3,12 +3,15 @@ var bodyParser = require("body-parser");
 var app = express();
 var path = require('path');
 var User = require("./models/user.js").User;
-var cookiesession = require("cookie-session");
+var redis = require("redis");
+var session = require("express-session");
 var router_app = require("./app/routes_app.js");
 var session_middleware = require("./middlewares/session");
 var publicPath = path.resolve(__dirname, 'public');
 var methodOverride = require("method-override");
 var formidable = require("express-formidable");
+let RedisStore = require("connect-redis")(session);
+let redisClient = redis.createClient();
 
 app.use("/state", express.static('public'));
 
@@ -21,16 +24,20 @@ app.get("/java", function(req,res){
 app.use(bodyParser.json()); // para peticiones que tengan el formato json
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cookiesession({
-    name :"session",
-    // @ts-ignore
-    keys :  ["llave-1", "llave-2"],
-}));
+var sessionMiddleware = session({
+    store: new RedisStore({ client: redisClient}),
+    secret:"super ultra secret word",
+    resave: false,
+});
+
+app.use(sessionMiddleware);
 
 app.use(express.static('assets'));
 app.use(express.static(publicPath));
 app.use(methodOverride("_method"));
 app.use(formidable.parse({ keepExtensions: true }));
+
+
 
 
 app.set("view engine", "jade");
