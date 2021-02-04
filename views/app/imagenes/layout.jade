@@ -1,20 +1,45 @@
 doctype html
 html(lang="es")
     head
-        title Insertar Imagen
+        title AerithSoft
         meta(charset="utf-8")
         link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous")
         link(href="/stylesheets/app.css" rel="stylesheet" type="text/css")
-    body
+    body    
         nav(class="large-padding black white-text")
-            ul
-            li
-                a(href="/app" class="btn btn-primary") Inicio
-            li 
-                a(href="/app/imagenes" class="btn btn-success") Imagenes
-            li
-                a(href="/login" class="btn btn-danger") Cerrar Sesion 
-
+            ul  
+                br
+                li  
+                    a(href="/app" class="btn btn-primary") Inicio
+                li 
+                    a(href="/app/imagenes" class="btn btn-success") Imagenes
+                li
+                    a(href="/login" class="btn btn-danger") Cerrar Sesion 
         div(class="fondo pt-3")
-                        block contenido       
-                
+            block contenido
+        footer(class="large-padding black white-text")
+            div(class="row")
+                div(class="col-sm-4 d-flex flex-column align-items-start")
+                    .container
+                        .row
+                            .col-sm-6.text-right
+                                img(src="https://icon-library.com/images/image-icon-png/image-icon-png-6.jpg" style="width: 70px")
+                                br
+                                h6 Imagen Gestor
+                                h6 Version 1.0
+                                h6 Build 1.0 2021
+                div(class="col-sm-4 d-flex flex-column")
+                    .container
+                        .row
+                            .col-sm-6
+                                h6 Soporte Tecnico
+                                img(src="https://image.flaticon.com/icons/png/512/281/281769.png" style="width: 40px")
+                                h6 aerithgriffin@gmail.com
+                div(class="col-sm-4 d-flex flex-column align-items-end")
+                    img(src="https://i.pinimg.com/originals/78/39/ef/7839ef1237f4ffee682979f8dad1adfa.png" style="width: 100px")
+                    h6 (c) 2021 AerithSoft
+                br
+                br
+                br
+                br  
+                        

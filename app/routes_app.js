@@ -3,7 +3,9 @@ var router = express.Router();
 var Imagen = require("../models/imagen");
 var fs = require("fs");
 var image_finder_middleware = require("../middlewares/find_image");
-
+var redis = require("redis");
+let ClientRect= redis.createClient();
+let client = redis.createClient();
 
 router.get("/",function(req,res){
     Imagen.find({})
@@ -37,6 +39,7 @@ router.get("/imagenes/:id/edit", function(req,res){
 
 router.route("/imagenes/:id")
 .get(function(req,res){
+    client.publish("imagenes", res.locals.imagen.toString());
     res.render("app/imagenes/show");
 })
 .put(function(req,res){
@@ -84,6 +87,7 @@ router.route("/imagenes")
 
     imagen.save(function(err){
         if(!err){
+            ClientRect.publish("imagenes", imagen.toString());
             fs.copyFile(req.body.archivo.path, "public/imagenes/"+imagen._id+"."+extension, function(err){
                 if(err){
                     return console.log(err);

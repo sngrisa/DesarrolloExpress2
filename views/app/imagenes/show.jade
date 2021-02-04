@@ -2,12 +2,13 @@ extends ./layout
 
 block contenido
     div(class="bg-white col-sm-5 text-center container pt-3")
-        br
-        br
         h3 Previsualizacion de la imagen
         br
+        if(typeof imagen.creator == "undefined")  
         br
-        if(typeof imagen.creator == "undefined")    
+        h4 Id de la imagen:  
+        h6= imagen._id
+        br
         h4 Titulo de la Imagen:
         h6= imagen.title
         br
@@ -28,6 +29,8 @@ block contenido
         a.btn(class="btn btn-success" href="/app/imagenes/") Aceptar y volver a la pagina de paginas
         br
         br
+
+    
 
         
 
